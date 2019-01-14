@@ -14,6 +14,7 @@ namespace onOffice\SDK\internal;
 use onOffice\SDK\Cache\onOfficeSDKCache;
 use onOffice\SDK\Exception\ApiCallFaultyResponseException;
 use onOffice\SDK\Exception\ApiCallNoActionParametersException;
+use onOffice\SDK\Exception\HttpFetchNoResultException;
 use onOffice\SDK\internal\ApiAction;
 use onOffice\SDK\internal\HttpFetch;
 use onOffice\SDK\internal\Request;
@@ -102,23 +103,29 @@ class ApiCall
 		$responseHttp = $this->getFromHttp($token, $actionParameters);
 		$result = json_decode($responseHttp, true);
 
-		if ($result['status']['code'] == 200 && isset($result['response']['results']))
+		if (!isset($result['response']['results']))
 		{
-			$idsForCache = array();
+			throw new HttpFetchNoResultException;
+		}
 
-			foreach ($result['response']['results'] as $requestNumber => $resultHttp)
-			{
-				$pRequest = $actionParametersOrder[$requestNumber];
-				$requestId = $pRequest->getRequestId();
-				$this->_responses[$requestId] = new Response($pRequest, $resultHttp);
-				$idsForCache[] = $requestId;
-			}
-			$this->writeCacheForResponses($idsForCache);
-		}
-		else
+		$idsForCache = array();
+
+		foreach ($result['response']['results'] as $requestNumber => $resultHttp)
 		{
-			$this->_errors []= $result;
+			$pRequest = $actionParametersOrder[$requestNumber];
+			$requestId = $pRequest->getRequestId();
+
+			if ($resultHttp['status']['errorcode'] == 0)
+			{
+				$this->_responses[$requestId] = new Response($pRequest, $resultHttp);
+				$idsForCache []= $requestId;
+			}
+			else
+			{
+				$this->_errors[$requestId] = $resultHttp;
+			}
 		}
+		$this->writeCacheForResponses($idsForCache);
 	}
 
 
@@ -327,12 +334,9 @@ class ApiCall
 	 *
 	 */
 
-	public function getAndRemoveErrors()
+	public function getErrors()
 	{
-		$errors = $this->_errors;
-		$this->_errors = array();
-
-		return $errors;
+		return $this->_errors;
 	}
 
 

@@ -199,7 +199,8 @@ class onOfficeSDK
 	 *
 	 */
 
-	public function setCaches(array $cacheInstances) {
+	public function setCaches(array $cacheInstances)
+	{
 		array_map(array($this->_pApiCall, 'addCache'), $cacheInstances);
 	}
 
@@ -208,7 +209,20 @@ class onOfficeSDK
 	 *
 	 */
 
-	public function removeCacheInstances() {
+	public function removeCacheInstances()
+	{
 		$this->_pApiCall->removeCacheInstances();
+	}
+
+
+	/**
+	 *
+	 * @return array
+	 *
+	 */
+
+	public function getErrors()
+	{
+		return $this->_pApiCall->getErrors();
 	}
 }
