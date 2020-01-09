@@ -5,5 +5,10 @@
     "require": {
         "ext-json": "*",
         "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "onOffice\\SDK\\": "SDK"
+        }
     }
 }
