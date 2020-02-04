@@ -6,12 +6,50 @@ supported by the onOffice GmbH.
 
 * **The HTTP protocol** is used to communicate with the API.
 * An **Access Token** is used to ensure a **secure** communication with the API.
-* The intention is to a **leightweight** client that can be used in other enviroments
+* The intention is to a **lightweight** client that can be used in other environments
 
 **Table of Contents**
+* [Quickstart Example](#quickstart-example)
 * [API Documentation](#api-documentation)
 * [Contributing](#contributing)
 * [License](#license)
+
+## Quickstart Example
+
+```php
+$pSDK = new onOfficeSDK();
+$pSDK->setApiVersion('latest');
+
+$parametersReadEstate = [
+	'data' => [
+		'Id',
+		'kaufpreis',
+		'lage',
+	],
+	'listlimit' => 10,
+	'sortby' => [
+		'kaufpreis' => 'ASC',
+		'warmmiete' => 'ASC',
+	],
+	'filter' => [
+		'kaufpreis' => [
+			['op' => '>', 'val' => 300000],
+		],
+		'status' => [
+			['op' => '=', 'val' => 1],
+		],
+	],
+];
+
+$handleReadEstate = $pSDK->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
+
+$pSDK->sendRequests('put the token here', 'and secret here');
+
+var_export($pSDK->getResponseArray($handleReadEstate));
+```
+
+Checkout the [example](/example.php) to see a possible implementation of
+this client.
 
 ## API Documentation
 
