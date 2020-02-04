@@ -17,7 +17,6 @@ If you want to contribute to this project, we would appreciate if you send us an
 
 apisupport@onoffice.de
 
-
 ## License
 
-This project is licensed under the MIT License. See LICENSE document.
+This project is licensed under the MIT License. See [LICENSE document](/LICENSE).
