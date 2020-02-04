@@ -1,5 +1,4 @@
-onOffice-SDK
-============
+# onOffice-SDK
 
 This project is intended as a basic client for the onOffice API.
 
@@ -9,15 +8,13 @@ There is no information about API actions and their proper parameters included i
 this package.
 
 
-Contributing
-------------
+## Contributing
 
 If you want to contribute to this project, we would appreciate if you send us an email to
 
 apisupport@onoffice.de
 
 
-License
--------
+## License
 
 This project is licensed under the MIT License. See LICENSE document.
