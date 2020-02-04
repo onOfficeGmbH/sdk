@@ -8,8 +8,14 @@ There is no information about API actions and their proper parameters included i
 this package.
 
 **Table of Contents**
+* [API Documentation](#api-documentation)
 * [Contributing](#contributing)
 * [License](#license)
+
+## API Documentation
+
+The API client is developed for the current version of the official API version.
+Additional information about the API can be [found here](https://apidoc.onoffice.de/).
 
 ## Contributing
 
