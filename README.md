@@ -7,6 +7,9 @@ and parameters.
 There is no information about API actions and their proper parameters included in
 this package.
 
+**Table of Contents**
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Contributing
 
