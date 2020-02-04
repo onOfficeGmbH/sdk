@@ -10,6 +10,9 @@ supported by the onOffice GmbH.
 
 **Table of Contents**
 * [Quickstart Example](#quickstart-example)
+* [Usage](#usage)
+  * [Client](#client)
+  * [Parameters](#parameters)
 * [API Documentation](#api-documentation)
 * [Contributing](#contributing)
 * [License](#license)
@@ -50,6 +53,52 @@ var_export($pSDK->getResponseArray($handleReadEstate));
 
 Checkout the [example](/example.php) to see a possible implementation of
 this client.
+
+## Usage
+
+### Client
+
+The `onOfficeSDK` is responsible for creating HTTP Requests and
+receiving HTTP Responses from the official API
+
+```php
+$pSDK = new onOfficeSDK();
+$pSDK->setApiVersion('latest');
+```
+
+Make sure that the correct API version is used for your client.
+By default this value is set to `latest`.
+
+### Parameters
+
+The parameters are transferred as JSON in the HTTP Request.
+The client uses the official
+[PHP array notation](https://www.php.net/manual/en/book.json.php)
+before transforming the array to JSON.
+
+```php
+$parametersReadEstate = [
+	'data' => [
+		'Id',
+		'kaufpreis',
+		'lage',
+	],
+	'listlimit' => 10,
+	'sortby' => [
+		'kaufpreis' => 'ASC',
+		'warmmiete' => 'ASC',
+	],
+	'filter' => [
+		'kaufpreis' => [
+			['op' => '>', 'val' => 300000],
+		],
+		'status' => [
+			['op' => '=', 'val' => 1],
+		],
+	],
+];
+
+```
 
 ## API Documentation
 
