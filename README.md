@@ -1,11 +1,12 @@
 # onOffice-SDK
 
-This project is intended as a basic client for the onOffice API.
+This project is the official PHP API client for the
+[onOffice API](https://apidoc.onoffice.de/)
+supported by the onOffice GmbH.
 
-It contains code for the proper generation of a request with a given token, secret, request action
-and parameters.
-There is no information about API actions and their proper parameters included in
-this package.
+* **The HTTP protocol** is used to communicate with the API.
+* An **Access Token** is used to ensure a **secure** communication with the API.
+* The intention is to a **leightweight** client that can be used in other enviroments
 
 **Table of Contents**
 * [API Documentation](#api-documentation)
