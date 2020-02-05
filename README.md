@@ -103,13 +103,13 @@ $parametersReadEstate = [
 
 ### Request
 
-To create a request to the API a an `ACTION_ID` is needed.
-In the class `onOfficeSDK` are several constants defined,
+To create a request to the API an `ACTION_ID` is needed.
+The class `onOfficeSDK` defines several constants,
 that can be used, so there is no need to copy these `ACTION_IDs`. 
 
-To send the request an API token and API secret is needed,
-checkout the [official API documentation](#api-documentation)
-how to get these credentials.
+A token and secret are needed to send a request to the API.
+Check out the [official API documentation](#api-documentation)
+for information on how to acquire these credentials.
 
 ```php
 $handleReadEstate = $pSDK->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
@@ -126,17 +126,16 @@ the request to the API via `onOfficeSDK::sendRequests`-
 ### Repsonse
 
 Use the method `onOfficeSDK::getResponseArray` to fetch the data for the response data.
-To identify the response of the request use the return value `onOfficeSDK::callGeneric`.
-
+To identify the response of the request use the value returned by `onOfficeSDK::callGeneric`.
 ```php
 var_export($pSDK->getResponseArray($handleReadEstate));
 ```
 
-The response will be an array values.
+The response will be a PHP array.
 
 ## API Documentation
 
-The API client is developed for the current version of the official API version.
+The API client is developed for the latest version of the official API version.
 Additional information about the API can be [found here](https://apidoc.onoffice.de/).
 
 ## Contributing
