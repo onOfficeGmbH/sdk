@@ -120,7 +120,7 @@ $pSDK->sendRequests('put the token here', 'and secret here');
 The return value of `onOfficeSDK::callGeneric` is used to identify the
 equivalent response value.
 `onOfficeSDK::callGeneric` can be called multiple times before sending
-the request to the API via `onOfficeSDK::sendRequests`-
+the request to the API via `onOfficeSDK::sendRequests`.
 
 
 ### Repsonse
