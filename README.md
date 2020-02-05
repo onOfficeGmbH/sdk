@@ -5,7 +5,8 @@ This project is the official PHP API client for the
 supported by the onOffice GmbH.
 
 * **The HTTP protocol** is used to communicate with the API.
-* An **Access Token** is used to ensure a **secure** communication with the API.
+* An **Access Token** and a**TLS connection** are used to ensure a **secure**
+  communication with the API.
 * The intention is to have **lightweight** client that can be used in other environments
 
 **Table of Contents**
@@ -14,7 +15,7 @@ supported by the onOffice GmbH.
   * [Client](#client)
   * [Parameters](#parameters)
   * [Request](#request)
-  * [Response](#respone)
+  * [Response](#response)
 * [API Documentation](#api-documentation)
 * [Contributing](#contributing)
 * [License](#license)
@@ -123,9 +124,9 @@ equivalent response value.
 the request to the API via `onOfficeSDK::sendRequests`.
 
 
-### Repsonse
+### Response
 
-Use the method `onOfficeSDK::getResponseArray` to fetch the data for the response data.
+Use the method `onOfficeSDK::getResponseArray` to fetch the response data for a request.
 To identify the response of the request use the value returned by `onOfficeSDK::callGeneric`.
 ```php
 var_export($pSDK->getResponseArray($handleReadEstate));
@@ -135,7 +136,7 @@ The response will be a PHP array.
 
 ## API Documentation
 
-The API client is developed for the latest version of the official API version.
+The API client is developed for the latest version of the official API.
 Additional information about the API can be [found here](https://apidoc.onoffice.de/).
 
 ## Contributing
