@@ -6,13 +6,15 @@ supported by the onOffice GmbH.
 
 * **The HTTP protocol** is used to communicate with the API.
 * An **Access Token** is used to ensure a **secure** communication with the API.
-* The intention is to a **lightweight** client that can be used in other environments
+* The intention is to have **lightweight** client that can be used in other environments
 
 **Table of Contents**
 * [Quickstart Example](#quickstart-example)
 * [Usage](#usage)
   * [Client](#client)
   * [Parameters](#parameters)
+  * [Request](#request)
+  * [Response](#respone)
 * [API Documentation](#api-documentation)
 * [Contributing](#contributing)
 * [License](#license)
@@ -97,8 +99,40 @@ $parametersReadEstate = [
 		],
 	],
 ];
-
 ```
+
+### Request
+
+To create a request to the API a an `ACTION_ID` is needed.
+In the class `onOfficeSDK` are several constants defined,
+that can be used, so there is no need to copy these `ACTION_IDs`. 
+
+To send the request an API token and API secret is needed,
+checkout the [official API documentation](#api-documentation)
+how to get these credentials.
+
+```php
+$handleReadEstate = $pSDK->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
+
+$pSDK->sendRequests('put the token here', 'and secret here');
+```
+
+The return value of `onOfficeSDK::callGeneric` is used to identify the
+equivalent response value.
+`onOfficeSDK::callGeneric` can be called multiple times before sending
+the request to the API via `onOfficeSDK::sendRequests`-
+
+
+### Repsonse
+
+Use the method `onOfficeSDK::getResponseArray` to fetch the data for the response data.
+To identify the response of the request use the return value `onOfficeSDK::callGeneric`.
+
+```php
+var_export($pSDK->getResponseArray($handleReadEstate));
+```
+
+The response will be an array values.
 
 ## API Documentation
 
