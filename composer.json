@@ -2,5 +2,8 @@
     "name": "onoffice/sdk",
     "description": "Official client to communicate with the onOffice API",
     "license": "MIT",
-    "require": {}
+    "require": {
+        "ext-json": "*",
+        "ext-curl": "*"
+    }
 }
