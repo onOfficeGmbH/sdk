@@ -4,7 +4,7 @@ When contributing to this service,
 please open an issue on
 [GitHub issues](https://github.com/onOfficeGmbH/sdk/issues)
 or send a mail to `apisupport@onoffice.de`
-this service before making a change.
+before making a change.
 
 ## Bugs
 
@@ -12,15 +12,15 @@ Bugs must be reported via the
 [GitHub issues](https://github.com/onOfficeGmbH/sdk/issues)
 Bug fixes and improvements can be provided via a Pull Request.
 
-A fix that redefines that behaviour of an implementation are considered
-as a [breaking change](#breaking-changes).
+A fix that introduces a change in behavior is considered a
+[breaking change](#breaking-changes).
 
 ## Features
 
 Features and Breaking Changes must be discussed with the
 maintainers of this repository.
 
-Features that also changes the behaviour of existing implementations
+Features that also change the behaviour of existing implementations
 are considered as [breaking changes](#breaking-changes).
 
 ## Breaking Changes
@@ -41,5 +41,7 @@ The list of maintainers can be found [here](https://github.com/orgs/onOfficeGmbH
   to the supported versions.
 * Keep the Pull Request as small as possible.
   Avoid unnecessary changes to speed up the review process.
+* Write readable and understandable code.
+  Try always to create the best possible solution.
 * Use readable and understandable commit messages, so the reviewer can understand the
   intention of each commit.
