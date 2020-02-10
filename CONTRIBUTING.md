@@ -1,16 +1,18 @@
 # Contributing
 
 When contributing to this service,
-please open an issue on
-[GitHub issues](https://github.com/onOfficeGmbH/sdk/issues)
+please open an issue via the
+[GitHub issues page](https://github.com/onOfficeGmbH/sdk/issues)
 or send a mail to `apisupport@onoffice.de`
 before making a change.
 
 ## Bugs
 
 Bugs must be reported via the
-[GitHub issues](https://github.com/onOfficeGmbH/sdk/issues)
-Bug fixes and improvements can be provided via a Pull Request.
+[GitHub issues page](https://github.com/onOfficeGmbH/sdk/issues).
+
+Bug fixes and improvements can be provided via a
+[Pull Request](https://github.com/onOfficeGmbH/sdk/pulls).
 
 A fix that introduces a change in behavior is considered a
 [breaking change](#breaking-changes).
@@ -21,7 +23,7 @@ Features and Breaking Changes must be discussed with the
 maintainers of this repository.
 
 Features that also change the behaviour of existing implementations
-are considered as [breaking changes](#breaking-changes).
+are considered [breaking changes](#breaking-changes).
 
 ## Breaking Changes
 
