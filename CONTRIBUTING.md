@@ -22,8 +22,8 @@ A fix that introduces a change in behavior is considered a
 Features and Breaking Changes must be discussed with the
 maintainers of this repository.
 
-Features that also change the behaviour of existing implementations
-are considered [breaking changes](#breaking-changes).
+A feature that introduces a change in existing behavior is considered a
+[breaking change](#breaking-changes).
 
 ## Breaking Changes
 
