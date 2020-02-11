@@ -26,7 +26,7 @@ class ApiAction
 	 *
 	 * @param string $actionid
 	 * @param string $resourceType
-	 * @param string $parameters
+	 * @param array $parameters
 	 * @param string $resourceId
 	 * @param string $identifier
 	 *
