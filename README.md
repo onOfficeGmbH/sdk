@@ -141,9 +141,9 @@ Additional information about the API can be [found here](https://apidoc.onoffice
 
 ## Contributing
 
-If you want to contribute to this project, we would appreciate if you send us an email to
+You want to contribute? Great!
 
-apisupport@onoffice.de
+Check out our [contribution rules](/CONTRIBUTING.md) and get started!
 
 ## License
 
