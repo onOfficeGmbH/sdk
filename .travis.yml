@@ -2,5 +2,3 @@ language: php
 
 php:
   - 7
-
-sudo: false
