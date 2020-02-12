@@ -8,15 +8,9 @@
  *
  */
 
-include 'Psr4AutoloaderClass.php';
-use onOffice\SDK\Psr4AutoloaderClass;
+include __DIR__ . '/vendor/autoload.php';
+
 use onOffice\SDK\onOfficeSDK;
-
-$pAutoloader = new Psr4AutoloaderClass();
-
-// register path to our files (namespace onOffice)
-$pAutoloader->addNamespace('onOffice', __DIR__);
-$pAutoloader->register();
 
 $pSDK = new onOfficeSDK();
 $pSDK->setApiVersion('latest');

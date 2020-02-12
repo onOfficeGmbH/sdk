@@ -17,6 +17,7 @@ supported by the onOffice GmbH.
   * [Request](#request)
   * [Response](#response)
 * [API Documentation](#api-documentation)
+* [Install](#install)
 * [Contributing](#contributing)
 * [License](#license)
 
@@ -138,6 +139,19 @@ The response will be a PHP array.
 
 The API client is developed for the latest version of the official API.
 Additional information about the API can be [found here](https://apidoc.onoffice.de/).
+
+## Install
+
+The recommended way to install this library is through Composer. 
+[New to Composer?](https://getcomposer.org/)?
+
+This will install the latest supported version:
+
+```
+$ composer install onoffice/sdk:^0.1.0
+```
+See also the [CHANGELOG](/CHANGELOG.md)
+for details about version upgrades.
 
 ## Contributing
 
