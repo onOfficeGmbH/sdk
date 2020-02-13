@@ -58,6 +58,6 @@ class RequestTest extends \PHPUnit\Framework\TestCase
 
 		$result = $request->getRequestId();
 
-		$this->assertEquals(1, $result);
+		$this->assertGreaterThan(0, $result);
 	}
 }
