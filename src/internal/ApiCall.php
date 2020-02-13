@@ -16,7 +16,6 @@ use onOffice\SDK\Exception\ApiCallFaultyResponseException;
 use onOffice\SDK\Exception\ApiCallNoActionParametersException;
 use onOffice\SDK\Exception\HttpFetchNoResultException;
 use onOffice\SDK\internal\ApiAction;
-use onOffice\SDK\internal\HttpFetch;
 use onOffice\SDK\internal\Request;
 
 
@@ -71,37 +70,43 @@ class ApiCall
 		return $requestId;
 	}
 
-
 	/**
 	 *
 	 * @param string $token
 	 * @param string $secret
-	 *
+	 * @param HttpFetch|null $httpFetch
+	 * @throws HttpFetchNoResultException
 	 */
 
-	public function sendRequests($token, $secret)
+	public function sendRequests($token, $secret, HttpFetch $httpFetch = null)
 	{
-		$this->collectOrGatherRequests($token, $secret);
+		$this->collectOrGatherRequests($token, $secret, $httpFetch);
 	}
-
 
 	/**
 	 *
 	 * @param string $token
 	 * @param array $actionParameters
 	 * @param array $actionParametersOrder
-	 *
+	 * @param \onOffice\SDK\internal\HttpFetch|null $httpFetch
+	 * @throws HttpFetchNoResultException
 	 */
 
-	private function sendHttpRequests($token, array $actionParameters, array $actionParametersOrder)
-	{
+	private function sendHttpRequests(
+		$token,
+		array $actionParameters,
+		array $actionParametersOrder,
+		HttpFetch $httpFetch = null
+	) {
 		if (count($actionParameters) === 0)
 		{
 			return;
 		}
 
-		$responseHttp = $this->getFromHttp($token, $actionParameters);
+		$responseHttp = $this->getFromHttp($token, $actionParameters, $httpFetch);
+
 		$result = json_decode($responseHttp, true);
+
 
 		if (!isset($result['response']['results']))
 		{
@@ -128,15 +133,15 @@ class ApiCall
 		$this->writeCacheForResponses($idsForCache);
 	}
 
-
 	/**
 	 *
 	 * @param string $token
 	 * @param string $secret
-	 *
+	 * @param HttpFetch|null $httpFetch
+	 * @throws HttpFetchNoResultException
 	 */
 
-	private function collectOrGatherRequests($token, $secret)
+	private function collectOrGatherRequests($token, $secret, HttpFetch $httpFetch = null)
 	{
 		$actionParameters = array();
 		$actionParametersOrder = array();
@@ -159,7 +164,7 @@ class ApiCall
 			}
 		}
 
-		$this->sendHttpRequests($token, $actionParameters, $actionParametersOrder);
+		$this->sendHttpRequests($token, $actionParameters, $actionParametersOrder, $httpFetch);
 		$this->_requestQueue = array();
 	}
 
@@ -239,27 +244,33 @@ class ApiCall
 		$this->_curlOptions = $curlOptions;
 	}
 
-
 	/**
 	 *
 	 * @param string $token
 	 * @param array $actionParameters
+	 * @param \onOffice\SDK\internal\HttpFetch|null $httpFetch
 	 * @return string
-	 * @throws ApiCallNoActionParametersException
-	 *
+	 * @throws HttpFetchNoResultException
 	 */
 
-	private function getFromHttp($token, $actionParameters)
-	{
+	private function getFromHttp(
+		$token,
+		$actionParameters,
+		HttpFetch $httpFetch = null
+	) {
+
 		$request = array
 			(
 				'token' => $token,
 				'request' => array('actions' => $actionParameters),
 			);
 
-		$pHttpFetch = new HttpFetch($this->getApiUrl(), json_encode($request));
-		$pHttpFetch->setCurlOptions($this->_curlOptions);
-		$response = $pHttpFetch->send();
+		if (null === $httpFetch) {
+			$httpFetch = new HttpFetch($this->getApiUrl(), json_encode($request));
+			$httpFetch->setCurlOptions($this->_curlOptions);
+		}
+
+		$response = $httpFetch->send();
 
 		return $response;
 	}
