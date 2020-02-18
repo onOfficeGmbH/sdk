@@ -148,7 +148,7 @@ The recommended way to install this library is through Composer.
 This will install the latest supported version:
 
 ```
-$ composer install onoffice/sdk:^0.1.0
+$ composer require onoffice/sdk:^0.1.0
 ```
 See also the [CHANGELOG](/CHANGELOG.md)
 for details about version upgrades.
