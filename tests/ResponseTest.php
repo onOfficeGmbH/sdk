@@ -74,7 +74,7 @@ class ResponseTest extends \PHPUnit\Framework\TestCase
 		$this->assertTrue($result);
 	}
 
-	public function testIsNotCacheAbleBecauseResponseHasBooleanFlag()
+	public function testIsNotCacheableBecauseResponseHasBooleanFlag()
 	{
 		$apiAction = new ApiAction(
 			'someActionId',
