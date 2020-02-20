@@ -98,7 +98,7 @@ class ResponseTest extends \PHPUnit\Framework\TestCase
 		$this->assertFalse($result);
 	}
 
-	public function testIsNotCacheAbleBecauseResponseIsInvalid()
+	public function testIsNotCacheableBecauseResponseIsInvalid()
 	{
 		$apiAction = new ApiAction(
 			'someActionId',
