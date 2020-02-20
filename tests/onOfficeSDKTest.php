@@ -9,8 +9,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->setMethods(['setServer'])
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
@@ -25,13 +24,11 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->setMethods(['setServer', 'setApiVersion'])
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setApiVersion')
 			->with('v1');
 
@@ -46,13 +43,11 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->setMethods(['setServer', 'setCurlOptions'])
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setCurlOptions')
 			->with(['some', 'actions']);
 
@@ -67,13 +62,11 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->setMethods(['setServer', 'callByRawData'])
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('callByRawData')
 			->with(
 				'someActionId',
@@ -98,13 +91,11 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->setMethods(['setServer', 'sendRequests'])
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('sendRequests')
 			->with(
 				'someToken',
@@ -125,13 +116,11 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->setMethods(['setServer', 'getResponse'])
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('getResponse')
 			->with(1)
 			->willReturn(['some', 'response']);
@@ -149,16 +138,14 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->setMethods(['setServer', 'addCache'])
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
 		$cache = $this->getMockBuilder(\onOffice\SDK\Cache\onOfficeSDKCache::class)
 			->getMock();
 
-		$apiCall
-			->expects($this->once())
+		$apiCall->expects($this->once())
 			->method('addCache')
 			->with($cache);
 
