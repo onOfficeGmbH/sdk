@@ -50,7 +50,7 @@ class ResponseTest extends \PHPUnit\Framework\TestCase
 		$this->assertFalse($result);
 	}
 
-	public function testIsNotCacheAble()
+	public function testIsNotCacheable()
 	{
 		$apiAction = new ApiAction(
 			'someActionId',
