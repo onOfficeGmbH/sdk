@@ -119,7 +119,7 @@ class ResponseTest extends \PHPUnit\Framework\TestCase
 		$this->assertFalse($result);
 	}
 
-	public function testIsNotCacheAbleBecauseResponseBooleanFlagIsMissing()
+	public function testIsNotCacheableBecauseResponseBooleanFlagIsMissing()
 	{
 		$apiAction = new ApiAction(
 			'someActionId',
