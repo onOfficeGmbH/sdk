@@ -18,7 +18,7 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 
 		$apiAction = new ApiAction(
 			'someId',
-		'someResource',
+			'someResource',
 			$parameters
 		);
 
@@ -44,7 +44,8 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 	public function testDefaultIdentifier()
 	{
 		$parameters = [
-			'param1' => 'value1', [
+			'param1' => 'value1',
+			[
 				'param2' => 'value2',
 				'param3' => 'value3'
 			]
@@ -101,10 +102,11 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 	public function testCustomIdentifier()
 	{
 		$parameters = [
-			'param1' => 'value1', [
-				'param2' => 'value2',
-				'param3' => 'value3'
-			]
+				'param1' => 'value1',
+				[
+					'param2' => 'value2',
+					'param3' => 'value3'
+				]
 		];
 
 		$apiAction = new ApiAction(
