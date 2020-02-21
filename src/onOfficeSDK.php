@@ -69,19 +69,19 @@ class onOfficeSDK
 	const RELATION_TYPE_ESTATE_ADDRESS_OWNER = 'urn:onoffice-de-ns:smart:2.5:relationTypes:estate:address:owner';
 
 	/** @var ApiCall */
-	private $_pApiCall = null;
+	private $apiCall = null;
 
 	/**
-	 * @param ApiCall|null $pApiCall
+	 * @param ApiCall|null $apiCall
 	 */
 
-	public function __construct(ApiCall $pApiCall = null)
+	public function __construct(ApiCall $apiCall = null)
 	{
-		if (null === $pApiCall) {
-			$pApiCall = new ApiCall();
+		if (null === $apiCall) {
+			$apiCall = new ApiCall();
 		}
-		$this->_pApiCall = $pApiCall;
-		$this->_pApiCall->setServer('https://api.onoffice.de/api/');
+		$this->apiCall = $apiCall;
+		$this->apiCall->setServer('https://api.onoffice.de/api/');
 	}
 
 
@@ -93,7 +93,7 @@ class onOfficeSDK
 
 	public function setApiVersion($apiVersion)
 	{
-		$this->_pApiCall->setApiVersion($apiVersion);
+		$this->apiCall->setApiVersion($apiVersion);
 	}
 
 
@@ -106,7 +106,7 @@ class onOfficeSDK
 
 	public function setApiServer($server)
 	{
-		$this->_pApiCall->setServer($server);
+		$this->apiCall->setServer($server);
 	}
 
 
@@ -119,7 +119,7 @@ class onOfficeSDK
 
 	public function setApiCurlOptions($curlOptions)
 	{
-		$this->_pApiCall->setCurlOptions($curlOptions);
+		$this->apiCall->setCurlOptions($curlOptions);
 	}
 
 
@@ -135,7 +135,7 @@ class onOfficeSDK
 
 	public function callGeneric($actionId, $resourceType, $parameters)
 	{
-		return $this->_pApiCall->callByRawData($actionId, '', '', $resourceType, $parameters);
+		return $this->apiCall->callByRawData($actionId, '', '', $resourceType, $parameters);
 	}
 
 
@@ -152,7 +152,7 @@ class onOfficeSDK
 
 	public function call($actionId, $resourceId, $identifier, $resourceType, $parameters)
 	{
-		return $this->_pApiCall->callByRawData
+		return $this->apiCall->callByRawData
 			($actionId, $resourceId, $identifier, $resourceType, $parameters);
 	}
 
@@ -166,7 +166,7 @@ class onOfficeSDK
 
 	public function sendRequests($token, $secret)
 	{
-		$this->_pApiCall->sendRequests($token, $secret);
+		$this->apiCall->sendRequests($token, $secret);
 	}
 
 
@@ -179,7 +179,7 @@ class onOfficeSDK
 
 	public function getResponseArray($number)
 	{
-		return $this->_pApiCall->getResponse($number);
+		return $this->apiCall->getResponse($number);
 	}
 
 
@@ -191,7 +191,7 @@ class onOfficeSDK
 
 	public function addCache(onOfficeSDKCache $pCache)
 	{
-		$this->_pApiCall->addCache($pCache);
+		$this->apiCall->addCache($pCache);
 	}
 
 
@@ -203,7 +203,7 @@ class onOfficeSDK
 
 	public function setCaches(array $cacheInstances)
 	{
-		array_map(array($this->_pApiCall, 'addCache'), $cacheInstances);
+		array_map(array($this->apiCall, 'addCache'), $cacheInstances);
 	}
 
 
@@ -213,7 +213,7 @@ class onOfficeSDK
 
 	public function removeCacheInstances()
 	{
-		$this->_pApiCall->removeCacheInstances();
+		$this->apiCall->removeCacheInstances();
 	}
 
 
@@ -225,6 +225,6 @@ class onOfficeSDK
 
 	public function getErrors()
 	{
-		return $this->_pApiCall->getErrors();
+		return $this->apiCall->getErrors();
 	}
 }

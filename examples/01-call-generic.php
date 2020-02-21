@@ -12,8 +12,8 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use onOffice\SDK\onOfficeSDK;
 
-$pSDK = new onOfficeSDK();
-$pSDK->setApiVersion('latest');
+$sdk = new onOfficeSDK();
+$sdk->setApiVersion('latest');
 
 $parametersReadEstate = [
 	'data' => [
@@ -36,8 +36,8 @@ $parametersReadEstate = [
 	],
 ];
 
-$handleReadEstate = $pSDK->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
+$handleReadEstate = $sdk->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
 
-$pSDK->sendRequests('put the token here', 'and secret here');
+$sdk->sendRequests('put the token here', 'and secret here');
 
-var_export($pSDK->getResponseArray($handleReadEstate));
+var_export($sdk->getResponseArray($handleReadEstate));
