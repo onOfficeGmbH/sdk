@@ -8,7 +8,11 @@
     },
     "autoload": {
         "psr-4": {
-            "onOffice\\SDK\\": "src",
+            "onOffice\\SDK\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Tests\\onOffice\\SDK\\": "tests"
         }
     },
