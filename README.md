@@ -55,7 +55,7 @@ $pSDK->sendRequests('put the token here', 'and secret here');
 var_export($pSDK->getResponseArray($handleReadEstate));
 ```
 
-Checkout the [example](/example.php) to see a possible implementation of
+Checkout the [examples folder](/examples/) to see a possible implementation of
 this client.
 
 ## Usage

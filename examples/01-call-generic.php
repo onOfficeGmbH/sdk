@@ -41,16 +41,3 @@ $handleReadEstate = $pSDK->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $p
 $pSDK->sendRequests('put the token here', 'and secret here');
 
 var_export($pSDK->getResponseArray($handleReadEstate));
-
-
-// Sometimes however, you will have to set the `resourceId` parameter. In This case, you can use the call() method.
-// Example:
-
-$parametersSearchEstate = [
-	'input' => 'Aachen',
-];
-
-$handleSearchEstate = $pSDK->call(onOfficeSDK::ACTION_ID_GET, 'estate', '', 'search', $parametersSearchEstate);
-$pSDK->sendRequests('put the token here', 'and secret here');
-
-var_export($pSDK->getResponseArray($handleSearchEstate));
