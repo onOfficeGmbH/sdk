@@ -63,10 +63,6 @@ class ApiCallTest extends \PHPUnit\Framework\TestCase
 			'someSecret',
 			$httpFetch
 		);
-
-		$result = $apiCall->getResponse($id);
-
-		$this->assertEquals([], $result);
 	}
 
 	public function testSendRequestsWithoutCallByRawData()
