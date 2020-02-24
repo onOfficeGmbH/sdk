@@ -144,7 +144,7 @@ Additional information about the API can be [found here](https://apidoc.onoffice
 ## Install
 
 The recommended way to install this library is through Composer. 
-[New to Composer?](https://getcomposer.org/)?
+[New to Composer?](https://getcomposer.org/)
 
 This will install the latest supported version:
 
