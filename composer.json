@@ -11,6 +11,11 @@
             "onOffice\\SDK\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\onOffice\\SDK\\": "tests"
+        }
+    },
     "require-dev": {
       "phpunit/phpunit": "^6",
       "friendsofphp/php-cs-fixer": "^2.16"
