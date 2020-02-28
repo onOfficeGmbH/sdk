@@ -25,8 +25,8 @@ supported by the onOffice GmbH.
 ## Quickstart Example
 
 ```php
-$pSDK = new onOfficeSDK();
-$pSDK->setApiVersion('latest');
+$sdk = new onOfficeSDK();
+$sdk->setApiVersion('latest');
 
 $parametersReadEstate = [
 	'data' => [
@@ -49,11 +49,11 @@ $parametersReadEstate = [
 	],
 ];
 
-$handleReadEstate = $pSDK->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
+$handleReadEstate = $sdk->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
 
-$pSDK->sendRequests('put the token here', 'and secret here');
+$sdk->sendRequests('put the token here', 'and secret here');
 
-var_export($pSDK->getResponseArray($handleReadEstate));
+var_export($sdk->getResponseArray($handleReadEstate));
 ```
 
 Checkout the [examples folder](/examples/) to see a possible implementation of
@@ -67,8 +67,8 @@ The `onOfficeSDK` is responsible for creating HTTP Requests and
 receiving HTTP Responses from the official API
 
 ```php
-$pSDK = new onOfficeSDK();
-$pSDK->setApiVersion('latest');
+$sdk = new onOfficeSDK();
+$sdk->setApiVersion('latest');
 ```
 
 Make sure that the correct API version is used for your client.
@@ -115,9 +115,9 @@ Check out the [official API documentation](#api-documentation)
 for information on how to acquire these credentials.
 
 ```php
-$handleReadEstate = $pSDK->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
+$handleReadEstate = $sdk->callGeneric(onOfficeSDK::ACTION_ID_READ, 'estate', $parametersReadEstate);
 
-$pSDK->sendRequests('put the token here', 'and secret here');
+$sdk->sendRequests('put the token here', 'and secret here');
 ```
 
 The return value of `onOfficeSDK::callGeneric` is used to identify the
@@ -131,7 +131,7 @@ the request to the API via `onOfficeSDK::sendRequests`.
 Use the method `onOfficeSDK::getResponseArray` to fetch the response data for a request.
 To identify the response of the request, use the value returned by `onOfficeSDK::callGeneric`.
 ```php
-var_export($pSDK->getResponseArray($handleReadEstate));
+var_export($sdk->getResponseArray($handleReadEstate));
 ```
 
 The response will be a PHP array.
