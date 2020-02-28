@@ -12,8 +12,7 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use onOffice\SDK\onOfficeSDK;
 
-$sdk = new onOfficeSDK();
-$sdk->setApiVersion('stable');
+$sdk = new onOfficeSDK('stable');
 
 $parametersReadEstate = [
 	'data' => [

@@ -46,15 +46,17 @@ class onOfficeSDK
 	private $apiCall = null;
 
 	/**
+	 * @param string $apiVersion
 	 * @param ApiCall|null $apiCall
 	 */
-	public function __construct(ApiCall $apiCall = null)
+	public function __construct($apiVersion = 'stable', ApiCall $apiCall = null)
 	{
 		if (null === $apiCall) {
 			$apiCall = new ApiCall();
 		}
 		$this->apiCall = $apiCall;
 		$this->apiCall->setServer('https://api.onoffice.de/api/');
+		$this->apiCall->setApiVersion($apiVersion);
 	}
 
 

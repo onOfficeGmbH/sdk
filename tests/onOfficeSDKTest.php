@@ -13,7 +13,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->method('setServer')
 			->with('https://api.onoffice.de/api/');
 
-		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK('latest', $apiCall);
 	}
 
 
@@ -32,8 +32,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->method('setApiVersion')
 			->with('v1');
 
-		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
-		$onOfficeSdk->setApiVersion('v1');
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK('v1', $apiCall);
 	}
 
 	public function testSetApiCurlOptions()
@@ -51,7 +50,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->method('setCurlOptions')
 			->with(['some', 'actions']);
 
-		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK('latest', $apiCall);
 		$onOfficeSdk->setApiCurlOptions(['some', 'actions']);
 	}
 
@@ -76,7 +75,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 				['some', 'parameters']
 			);
 
-		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK('latest', $apiCall);
 		$onOfficeSdk->callGeneric(
 			'someActionId',
 			'someResourceType',
@@ -102,7 +101,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 				'someSecret'
 			);
 
-		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK('latest', $apiCall);
 		$onOfficeSdk->sendRequests(
 			'someToken',
 			'someSecret'
@@ -125,7 +124,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->with(1)
 			->willReturn(['some', 'response']);
 
-		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK('latest', $apiCall);
 		$result = $onOfficeSdk->getResponseArray(1);
 
 		$this->assertEquals(['some', 'response'], $result);
@@ -149,7 +148,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->method('addCache')
 			->with($cache);
 
-		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK('latest', $apiCall);
 
 		$onOfficeSdk->addCache($cache);
 	}
