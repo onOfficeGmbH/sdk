@@ -12,8 +12,8 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use onOffice\SDK\onOfficeSDK;
 
-$pSDK = new onOfficeSDK();
-$pSDK->setApiVersion('latest');
+$sdk = new onOfficeSDK();
+$sdk->setApiVersion('latest');
 
 $parametersReadEstate = [
 	'data' => [
@@ -41,8 +41,8 @@ $parametersSearchEstate = [
 	'input' => 'Aachen',
 ];
 
-$handleSearchEstate = $pSDK->call(onOfficeSDK::ACTION_ID_GET, 'estate', '', 'search', $parametersSearchEstate);
+$handleSearchEstate = $sdk->call(onOfficeSDK::ACTION_ID_GET, 'estate', '', 'search', $parametersSearchEstate);
 
-$pSDK->sendRequests('put the token here', 'and secret here');
+$sdk->sendRequests('put the token here', 'and secret here');
 
-var_export($pSDK->getResponseArray($handleSearchEstate));
+var_export($sdk->getResponseArray($handleSearchEstate));
