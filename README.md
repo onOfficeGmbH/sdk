@@ -25,8 +25,7 @@ supported by the onOffice GmbH.
 ## Quickstart Example
 
 ```php
-$sdk = new onOfficeSDK();
-$sdk->setApiVersion('stable');
+$sdk = new onOfficeSDK('stable');
 
 $parametersReadEstate = [
 	'data' => [
@@ -67,8 +66,7 @@ The `onOfficeSDK` is responsible for creating HTTP Requests and
 receiving HTTP Responses from the official API
 
 ```php
-$sdk = new onOfficeSDK();
-$sdk->setApiVersion('stable');
+$sdk = new onOfficeSDK('stable');
 ```
 
 Make sure that the correct API version is used for your client.
