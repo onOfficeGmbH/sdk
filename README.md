@@ -72,6 +72,12 @@ $pSDK->setApiVersion('latest');
 ```
 
 Make sure that the correct API version is used for your client.
+Currently there are two official API versions `stable` and `latest`.
+* The `stable` version is updated monthly.
+* The `latest` version is updated two times a week.
+
+Use the `latest` if there is a need to use new features and endpoints.
+
 By default this value is set to `latest`.
 
 ### Parameters
