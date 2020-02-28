@@ -1,18 +1,6 @@
 <?php
 
-/**
- *
- * @url http://www.onoffice.de
- * @copyright 2016, onOffice(R) Software AG
- * @license MIT
- *
- */
-
 namespace onOffice\SDK\Exception;
-
-/**
- *
- */
 
 class HttpFetchNoResultException extends SDKException
 {
@@ -21,9 +9,7 @@ class HttpFetchNoResultException extends SDKException
 
 
 	/**
-	 *
 	 * @return int
-	 *
 	 */
 
 	public function getCurlErrno()
@@ -31,11 +17,8 @@ class HttpFetchNoResultException extends SDKException
 		return $this->_curlErrno;
 	}
 
-
 	/**
-	 *
 	 * @param int $errno
-	 *
 	 */
 
 	public function setCurlErrno($errno)

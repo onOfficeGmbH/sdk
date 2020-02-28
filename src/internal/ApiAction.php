@@ -1,21 +1,10 @@
 <?php
 
-/**
- *
- * @url http://www.onoffice.de
- * @copyright 2016, onOffice(R) Software AG
- * @license MIT
- *
- */
-
-
 namespace onOffice\SDK\internal;
 
-
 /**
- *
+ * @internal
  */
-
 class ApiAction
 {
 	/** @var array */
@@ -23,15 +12,12 @@ class ApiAction
 
 
 	/**
-	 *
 	 * @param string $actionid
 	 * @param string $resourceType
 	 * @param array $parameters
 	 * @param string $resourceId
 	 * @param string $identifier
-	 *
 	 */
-
 	public function __construct($actionid, $resourceType, $parameters, $resourceId = '', $identifier = '')
 	{
 		ksort($parameters);
@@ -44,11 +30,8 @@ class ApiAction
 
 
 	/**
-	 *
 	 * @return array
-	 *
 	 */
-
 	public function getActionParameters()
 	{
 		return $this->_actionParameters;
@@ -56,11 +39,8 @@ class ApiAction
 
 
 	/**
-	 *
 	 * @return string
-	 *
 	 */
-
 	public function getIdentifier()
 	{
 		return md5(serialize($this->_actionParameters));
