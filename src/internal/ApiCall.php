@@ -35,7 +35,7 @@ class ApiCall
 	private $_errors = array();
 
 	/** @var string */
-	private $_apiVersion = 'latest';
+	private $_apiVersion = 'stable';
 
 	/** @var onOfficeSDKCache[] */
 	private $_caches = array();
