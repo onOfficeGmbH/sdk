@@ -5,7 +5,7 @@ include __DIR__ . '/../vendor/autoload.php';
 use onOffice\SDK\onOfficeSDK;
 
 $pSDK = new onOfficeSDK();
-$pSDK->setApiVersion('latest');
+$pSDK->setApiVersion('stable');
 
 $parameterCacheId = '<insert parameterCacheId from IFrame url>';
 

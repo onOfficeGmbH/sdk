@@ -26,7 +26,7 @@ supported by the onOffice GmbH.
 
 ```php
 $sdk = new onOfficeSDK();
-$sdk->setApiVersion('latest');
+$sdk->setApiVersion('stable');
 
 $parametersReadEstate = [
 	'data' => [
@@ -68,11 +68,11 @@ receiving HTTP Responses from the official API
 
 ```php
 $sdk = new onOfficeSDK();
-$sdk->setApiVersion('latest');
+$sdk->setApiVersion('stable');
 ```
 
 Make sure that the correct API version is used for your client.
-By default this value is set to `latest`.
+By default this value is set to `stable`.
 
 ### Parameters
 
