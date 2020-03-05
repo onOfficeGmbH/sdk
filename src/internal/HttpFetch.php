@@ -1,12 +1,5 @@
 <?php
 
-/**
- *
- * @url http://www.onoffice.de
- * @copyright 2016, onOffice(R) Software AG
- * @license MIT
- *
- */
 
 
 namespace onOffice\SDK\internal;
@@ -15,9 +8,8 @@ use onOffice\SDK\Exception\HttpFetchNoResultException;
 
 
 /**
- *
+ * @internal
  */
-
 class HttpFetch
 {
 	/** @var string */
@@ -31,12 +23,9 @@ class HttpFetch
 
 
 	/**
-	 *
 	 * @param string $url
 	 * @param string $postData as JSON
-	 *
 	 */
-
 	public function __construct($url, $postData)
 	{
 		$this->_url = $url;
@@ -45,11 +34,8 @@ class HttpFetch
 
 
 	/**
-	 *
 	 * @param array $curlOptions
-	 *
 	 */
-
 	public function setCurlOptions($curlOptions)
 	{
 		$this->_curlOptions = $curlOptions;
@@ -57,12 +43,9 @@ class HttpFetch
 
 
 	/**
-	 *
 	 * @return string
 	 * @throws HttpFetchNoResultException
-	 *
 	 */
-
 	public function send()
 	{
 		$curlVersionInfo = curl_version();

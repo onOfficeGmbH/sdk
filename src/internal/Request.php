@@ -1,21 +1,13 @@
 <?php
 
-/**
- *
- * @url http://www.onoffice.de
- * @copyright 2016, onOffice(R) Software AG
- * @license MIT
- *
- */
 
 
 namespace onOffice\SDK\internal;
 
 
 /**
- *
+ * @internal
  */
-
 class Request
 {
 	/** @var ApiAction */
@@ -29,11 +21,8 @@ class Request
 
 
 	/**
-	 *
 	 * @param ApiAction $pApiAction
-	 *
 	 */
-
 	public function __construct(ApiAction $pApiAction)
 	{
 		$this->_pApiAction = $pApiAction;
@@ -42,13 +31,10 @@ class Request
 
 
 	/**
-	 *
 	 * @param string $token
 	 * @param string $secret
 	 * @return array
-	 *
 	 */
-
 	public function createRequest($token, $secret)
 	{
 		$actionParameters = $this->_pApiAction->getActionParameters();
@@ -68,7 +54,6 @@ class Request
 
 
 	/**
-	 *
 	 * @param string $id
 	 * @param string $token
 	 * @param string $secret
@@ -78,9 +63,7 @@ class Request
 	 * @param string $parameters
 	 * @param string $actionId
 	 * @return string
-	 *
 	 */
-
 	private function createHmac($id, $token, $secret, $timestamp, $identifier, $type, $parameters, $actionId)
 	{
 		// in alphabetical order
@@ -101,7 +84,6 @@ class Request
 
 		return $hmac;
 	}
-
 
 	/** @return int */
 	public function getRequestId()

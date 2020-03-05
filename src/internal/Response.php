@@ -1,17 +1,9 @@
 <?php
 
-/**
- *
- * @url http://www.onoffice.de
- * @copyright 2016, onOffice(R) Software AG
- * @license MIT
- *
- */
-
 namespace onOffice\SDK\internal;
 
 /**
- *
+ * @internal
  */
 
 class Response
@@ -24,12 +16,9 @@ class Response
 
 
 	/**
-	 *
 	 * @param Request $pRequest
 	 * @param array $responseData
-	 *
 	 */
-
 	public function __construct(Request $pRequest, array $responseData)
 	{
 		$this->_pRequest = $pRequest;
@@ -38,9 +27,7 @@ class Response
 
 
 	/**
-	 *
 	 * @return bool
-	 *
 	 */
 
 	public function isValid()
@@ -52,17 +39,13 @@ class Response
 
 
 	/**
-	 *
 	 * @return bool
-	 *
 	 */
-
 	public function isCacheable()
 	{
 		return $this->isValid() && isset($this->_responseData['cacheable']) &&
 			$this->_responseData['cacheable'];
 	}
-
 
 	/** @return Request */
 	public function getRequest()

@@ -1,14 +1,5 @@
 <?php
 
-/**
- *
- * @url http://www.onoffice.de
- * @copyright 2016, onOffice(R) Software AG
- * @license MIT
- *
- */
-
-
 namespace onOffice\SDK\internal;
 
 use onOffice\SDK\Cache\onOfficeSDKCache;
@@ -20,9 +11,8 @@ use onOffice\SDK\internal\Request;
 
 
 /**
- *
+ * @internal
  */
-
 class ApiCall
 {
 	/** @var Request[] */
@@ -48,7 +38,6 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @param string $actionId
 	 * @param string $resourceId
 	 * @param string $identifier
@@ -56,7 +45,6 @@ class ApiCall
 	 * @param array $parameters
 	 *
 	 * @return int the request handle
-	 *
 	 */
 
 	public function callByRawData($actionId, $resourceId, $identifier, $resourceType, $parameters = array())
@@ -71,10 +59,10 @@ class ApiCall
 	}
 
 	/**
-	 *
 	 * @param string $token
 	 * @param string $secret
 	 * @param HttpFetch|null $httpFetch
+	 *
 	 * @throws HttpFetchNoResultException
 	 */
 
@@ -84,11 +72,11 @@ class ApiCall
 	}
 
 	/**
-	 *
 	 * @param string $token
 	 * @param array $actionParameters
 	 * @param array $actionParametersOrder
 	 * @param \onOffice\SDK\internal\HttpFetch|null $httpFetch
+	 *
 	 * @throws HttpFetchNoResultException
 	 */
 
@@ -134,10 +122,10 @@ class ApiCall
 	}
 
 	/**
-	 *
 	 * @param string $token
 	 * @param string $secret
 	 * @param HttpFetch|null $httpFetch
+	 *
 	 * @throws HttpFetchNoResultException
 	 */
 
@@ -168,11 +156,9 @@ class ApiCall
 		$this->_requestQueue = array();
 	}
 
-
 	/**
-	 *
+	 * @param array $responses
 	 */
-
 	private function writeCacheForResponses(array $responses)
 	{
 		if (count($this->_caches) === 0)
@@ -196,12 +182,9 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @param array $parameters
 	 * @return array
-	 *
 	 */
-
 	private function getFromCache($parameters)
 	{
 		foreach ($this->_caches as $pCache)
@@ -217,13 +200,10 @@ class ApiCall
 		return null;
 	}
 
-
 	/**
-	 *
 	 * @param string $result
-	 *
+	 * @param $actionParameters
 	 */
-
 	private function writeCache($result, $actionParameters)
 	{
 		foreach ($this->_caches as $pCache)
@@ -234,25 +214,21 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @param array $curlOptions
-	 *
 	 */
-
 	public function setCurlOptions($curlOptions)
 	{
 		$this->_curlOptions = $curlOptions;
 	}
 
 	/**
-	 *
 	 * @param string $token
 	 * @param array $actionParameters
 	 * @param \onOffice\SDK\internal\HttpFetch|null $httpFetch
 	 * @return string
+	 *
 	 * @throws HttpFetchNoResultException
 	 */
-
 	private function getFromHttp(
 		$token,
 		$actionParameters,
@@ -277,13 +253,10 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @param int $handle
 	 * @return array
 	 * @throws ApiCallFaultyResponseException
-	 *
 	 */
-
 	public function getResponse($handle)
 	{
 		if (array_key_exists($handle, $this->_responses))
@@ -305,11 +278,8 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @return string
-	 *
 	 */
-
 	private function getApiUrl()
 	{
 		return $this->_server.urlencode($this->_apiVersion).'/api.php';
@@ -317,11 +287,8 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @param string $apiVersion
-	 *
 	 */
-
 	public function setApiVersion($apiVersion)
 	{
 		$this->_apiVersion = $apiVersion;
@@ -329,22 +296,16 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @param string $server
-	 *
 	 */
-
 	public function setServer($server)
 	{
 		$this->_server = $server;
 	}
 
 	/**
-	 *
 	 * @return array
-	 *
 	 */
-
 	public function getErrors()
 	{
 		return $this->_errors;
@@ -352,20 +313,12 @@ class ApiCall
 
 
 	/**
-	 *
 	 * @param onOfficeSDKCache $pCache
-	 *
 	 */
-
 	public function addCache(onOfficeSDKCache $pCache)
 	{
 		$this->_caches []= $pCache;
 	}
-
-
-	/**
-	 *
-	 */
 
 	public function removeCacheInstances() {
 		$this->_caches = array();
