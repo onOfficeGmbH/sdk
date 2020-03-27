@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\onOffice\SDK;
+
 class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 {
 	public function testCreationOfClient()
