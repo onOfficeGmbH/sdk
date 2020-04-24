@@ -15,28 +15,6 @@ use onOffice\SDK\onOfficeSDK;
 $sdk = new onOfficeSDK();
 $sdk->setApiVersion('stable');
 
-$parametersReadEstate = [
-	'data' => [
-		'Id',
-		'kaufpreis',
-		'lage',
-	],
-	'listlimit' => 10,
-	'sortby' => [
-		'kaufpreis' => 'ASC',
-		'warmmiete' => 'ASC',
-	],
-	'filter' => [
-		'kaufpreis' => [
-			['op' => '>', 'val' => 300000],
-		],
-		'status' => [
-			['op' => '=', 'val' => 1],
-		],
-	],
-];
-
-
 $parametersSearchEstate = [
 	'input' => 'Aachen',
 ];
