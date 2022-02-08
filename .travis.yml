@@ -1,8 +1,0 @@
-language: php
-
-php:
-  - 7
-
-install:
-  - composer install --no-interaction
-  - if [ "$DEPENDENCIES" = "lowest" ]; then composer update --prefer-lowest -n; fi
