@@ -1,5 +1,5 @@
 # onOffice-SDK
-![Travis (.org) branch](https://img.shields.io/travis/onOfficeGmbH/sdk/master)
+[![PHP Composer](https://github.com/onOfficeGmbH/sdk/actions/workflows/php.yml/badge.svg)](https://github.com/onOfficeGmbH/sdk/actions/workflows/php.yml)
 
 This project is the official PHP API client for the
 [onOffice API](https://apidoc.onoffice.de/)
