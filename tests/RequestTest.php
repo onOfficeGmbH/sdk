@@ -25,6 +25,9 @@ class RequestTest extends \PHPUnit\Framework\TestCase
 
 	public function testCreateRequest()
 	{
+		$secret = 'someSecret';
+		$token = 'someToken';
+
 		$apiAction = new ApiAction(
 			'someActionId',
 			'someResourceType',
@@ -34,7 +37,15 @@ class RequestTest extends \PHPUnit\Framework\TestCase
 		);
 
 		$request = new Request($apiAction);
-		$result = $request->createRequest('someToken', 'someSecret');
+		$result = $request->createRequest($token, $secret);
+
+		$fields = [
+			'timestamp' => $result['timestamp'],
+			'token' => $token,
+			'resourcetype' => $result['resourcetype'],
+			'actionid' => $result['actionid'],
+		];
+		$hmac = base64_encode(hash_hmac('sha256',implode('',$fields),$secret,true));
 
 		$this->assertGreaterThan(0, $result['timestamp']);
 		$this->assertEquals('someResourceId', $result['resourceid']);
@@ -42,7 +53,8 @@ class RequestTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals([], $result['parameters']);
 		$this->assertEquals('someActionId', $result['actionid']);
 		$this->assertEquals('someResourceType', $result['resourcetype']);
-		$this->assertGreaterThan(0, strlen($result['hmac']));
+		$this->assertGreaterThanOrEqual(2, $result['hmac_version']);
+		$this->assertEquals($hmac, $result['hmac']);
 	}
 
 	public function testGetRequestId()
