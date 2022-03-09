@@ -35,7 +35,8 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 				]
 			],
 			'resourceid' => '',
-			'resourcetype' => 'someResource'
+			'resourcetype' => 'someResource',
+			'timestamp' => null,
 		];
 
 		$this->assertEquals($expectation, $result);
@@ -59,7 +60,7 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 
 		$result = $apiAction->getIdentifier();
 
-		$this->assertEquals('d419f822aba1c1c59a4c76b690a1c86a', $result);
+		$this->assertEquals('3e6d7c2771ea0fbda0cc93d24601b8e5', $result);
 	}
 
 	public function testCustomCreationOfActionParameters()
@@ -93,7 +94,8 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 				]
 			],
 			'resourceid' => 'someResourceId',
-			'resourcetype' => 'someResource'
+			'resourcetype' => 'someResource',
+			'timestamp' => null,
 		];
 
 		$this->assertEquals($expectation, $result);
@@ -102,11 +104,11 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 	public function testCustomIdentifier()
 	{
 		$parameters = [
-				'param1' => 'value1',
-				[
-					'param2' => 'value2',
-					'param3' => 'value3'
-				]
+			'param1' => 'value1',
+			[
+				'param2' => 'value2',
+				'param3' => 'value3'
+			]
 		];
 
 		$apiAction = new ApiAction(
@@ -114,11 +116,12 @@ class ApiActionTest extends \PHPUnit\Framework\TestCase
 			'someResource',
 			$parameters,
 			'someResourceId',
-			'someIdentifier'
+			'someIdentifier',
+			123
 		);
 
 		$result = $apiAction->getIdentifier();
 
-		$this->assertEquals('7919bb645be5d61927052c22867a4f52', $result);
+		$this->assertEquals('8e09009ce91b383e5c169dc78c24e322', $result);
 	}
 }

@@ -3,7 +3,7 @@
 /**
  *
  * @url http://www.onoffice.de
- * @copyright 2016, onOffice(R) Software AG
+ * @copyright 2022, onOffice(R) GmbH
  * @license MIT
  *
  */
@@ -52,10 +52,8 @@ class Request
 	public function createRequest($token, $secret)
 	{
 		$actionParameters = $this->_pApiAction->getActionParameters();
-		$actionParameters['timestamp'] = time();
+		$timestamp = $actionParameters['timestamp'] ?? time();
 		$actionParameters['hmac_version'] = 2;
-
-		$timestamp = $actionParameters['timestamp'];
 
 		$actionId = $actionParameters['actionid'];
 		$type = $actionParameters['resourcetype'];

@@ -18,7 +18,7 @@ class ApiAction
 	 * @param string $resourceId
 	 * @param string $identifier
 	 */
-	public function __construct($actionid, $resourceType, $parameters, $resourceId = '', $identifier = '')
+	public function __construct($actionid, $resourceType, $parameters, $resourceId = '', $identifier = '', $timestamp = null)
 	{
 		ksort($parameters);
 		$this->_actionParameters['actionid'] = $actionid;
@@ -26,6 +26,7 @@ class ApiAction
 		$this->_actionParameters['parameters'] = $parameters;
 		$this->_actionParameters['resourceid'] = $resourceId;
 		$this->_actionParameters['resourcetype'] = $resourceType;
+		$this->_actionParameters['timestamp'] = $timestamp;
 	}
 
 
