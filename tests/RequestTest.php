@@ -25,24 +25,29 @@ class RequestTest extends \PHPUnit\Framework\TestCase
 
 	public function testCreateRequest()
 	{
+		$secret = 'yOJobbhGLXdp90XxvxedFhH7073L9U';
+		$token = 'mgjIQkNRnaqggVzy9cZW';
+
 		$apiAction = new ApiAction(
-			'someActionId',
-			'someResourceType',
+			'urn:onoffice-de-ns:smart:2.5:smartml:action:get',
+			'estateCategories',
 			[],
 			'someResourceId',
-			'someIdentifier'
+			'someIdentifier',
+			123456789
 		);
 
 		$request = new Request($apiAction);
-		$result = $request->createRequest('someToken', 'someSecret');
+		$result = $request->createRequest($token, $secret);
 
 		$this->assertGreaterThan(0, $result['timestamp']);
 		$this->assertEquals('someResourceId', $result['resourceid']);
 		$this->assertEquals('someIdentifier', $result['identifier']);
 		$this->assertEquals([], $result['parameters']);
-		$this->assertEquals('someActionId', $result['actionid']);
-		$this->assertEquals('someResourceType', $result['resourcetype']);
-		$this->assertGreaterThan(0, strlen($result['hmac']));
+		$this->assertEquals('urn:onoffice-de-ns:smart:2.5:smartml:action:get', $result['actionid']);
+		$this->assertEquals('estateCategories', $result['resourcetype']);
+		$this->assertGreaterThanOrEqual(2, $result['hmac_version']);
+		$this->assertEquals('dsvg3r4AFcQXges0MZ+3auzQVfnEB39pLkKSgmm9Wvg=', $result['hmac']);
 	}
 
 	public function testGetRequestId()

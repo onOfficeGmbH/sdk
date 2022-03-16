@@ -1,13 +1,21 @@
 <?php
 
+/**
+ *
+ * @url http://www.onoffice.de
+ * @copyright 2022, onOffice(R) GmbH
+ * @license MIT
+ *
+ */
 
 
 namespace onOffice\SDK\internal;
 
 
 /**
- * @internal
+ *
  */
+
 class Request
 {
 	/** @var ApiAction */
@@ -21,8 +29,11 @@ class Request
 
 
 	/**
+	 *
 	 * @param ApiAction $pApiAction
+	 *
 	 */
+
 	public function __construct(ApiAction $pApiAction)
 	{
 		$this->_pApiAction = $pApiAction;
@@ -31,22 +42,22 @@ class Request
 
 
 	/**
+	 *
 	 * @param string $token
 	 * @param string $secret
 	 * @return array
+	 *
 	 */
+
 	public function createRequest($token, $secret)
 	{
 		$actionParameters = $this->_pApiAction->getActionParameters();
-		$actionParameters['timestamp'] = time();
-		$timestamp = $actionParameters['timestamp'];
+		$timestamp = $actionParameters['timestamp'] ?? time();
+		$actionParameters['hmac_version'] = 2;
 
-		$id = $actionParameters['resourceid'];
-		$identifier = $actionParameters['identifier'];
-		$parameters = $actionParameters['parameters'];
 		$actionId = $actionParameters['actionid'];
 		$type = $actionParameters['resourcetype'];
-		$hmac = $this->createHmac($id, $token, $secret, $timestamp, $identifier, $type, $parameters, $actionId);
+		$hmac = $this->createHmac2( $token, $secret, $timestamp, $type, $actionId);
 		$actionParameters['hmac'] = $hmac;
 
 		return $actionParameters;
@@ -54,42 +65,34 @@ class Request
 
 
 	/**
-	 * @param string $id
+	 *
 	 * @param string $token
 	 * @param string $secret
 	 * @param string $timestamp
-	 * @param string $identifier
 	 * @param string $type
-	 * @param string $parameters
 	 * @param string $actionId
 	 * @return string
+	 *
 	 */
-	private function createHmac($id, $token, $secret, $timestamp, $identifier, $type, $parameters, $actionId)
+
+	private function createHmac2($token, $secret, $timestamp, $type, $actionId)
 	{
-		// in alphabetical order
-		$fields['accesstoken'] = $token;
-		$fields['actionid'] = $actionId;
-		$fields['identifier'] = $identifier;
-		$fields['resourceid'] = $id;
-		$fields['secret'] = $secret;
-		$fields['timestamp'] = $timestamp;
-		$fields['type'] = $type;
+		$fields = [
+			'timestamp' => $timestamp,
+			'token' => $token,
+			'resourcetype' => $type,
+			'actionid' => $actionId,
+		];
 
-		ksort($parameters);
-
-		$parametersBundled = json_encode($parameters);
-		$fieldsBundled = implode(',', $fields);
-		$allParams = $parametersBundled.','.$fieldsBundled;
-		$hmac = md5($secret.md5($allParams));
-
-		return $hmac;
+		return base64_encode(hash_hmac('sha256', implode('',$fields), $secret, true));
 	}
+
 
 	/** @return int */
 	public function getRequestId()
-		{ return $this->_requestId; }
+	{ return $this->_requestId; }
 
 	/** @return ApiAction */
 	public function getApiAction()
-		{ return $this->_pApiAction; }
+	{ return $this->_pApiAction; }
 }
