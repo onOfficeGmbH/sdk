@@ -52,12 +52,13 @@ class Request
 	public function createRequest($token, $secret)
 	{
 		$actionParameters = $this->_pApiAction->getActionParameters();
-		$timestamp = $actionParameters['timestamp'] ?? time();
+
+		$actionParameters['timestamp'] = $actionParameters['timestamp'] ?? time();
 		$actionParameters['hmac_version'] = 2;
 
 		$actionId = $actionParameters['actionid'];
 		$type = $actionParameters['resourcetype'];
-		$hmac = $this->createHmac2( $token, $secret, $timestamp, $type, $actionId);
+		$hmac = $this->createHmac2( $token, $secret, $actionParameters['timestamp'], $type, $actionId);
 		$actionParameters['hmac'] = $hmac;
 
 		return $actionParameters;
