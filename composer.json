@@ -3,6 +3,7 @@
     "description": "Official client to communicate with the onOffice API",
     "license": "MIT",
     "require": {
+        "php": ">=7.0.0",
         "ext-json": "*",
         "ext-curl": "*"
     },
