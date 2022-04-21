@@ -52,7 +52,7 @@ class SDKIntegrationTest extends \PHPUnit\Framework\TestCase
             'datestart' => '25-03-2022 02:17:53',
             'showcancelled' => true
         ]);
-        $sdk->sendRequests('testtoken', 'testsecrect');
+        $sdk->sendRequests('testtoken', 'testsecret');
 EOS;
 
         sleep(2);
@@ -98,7 +98,7 @@ EOS;
             .'Content-Length: 382'."\r\n"
             .'Content-Type: application/x-www-form-urlencoded'."\r\n"
             ."\r\n"
-            .'{"token":"testtoken","request":{"actions":[{"actionid":"urn:onoffice-de-ns:smart:2.5:smartml:action:read","identifier":null,"parameters":{"allusers":false,"dateend":"25-03-2022 02:17:53","datestart":"25-03-2022 02:17:53","showcancelled":true},"resourceid":"","resourcetype":"calendar","timestamp":1646228220,"hmac_version":2,"hmac":"xEtO1ptCf+CKWsVPB+9AM+EM91uB2tc17VIUuVorYOA="}]}}';
+            .'{"token":"testtoken","request":{"actions":[{"actionid":"urn:onoffice-de-ns:smart:2.5:smartml:action:read","identifier":null,"parameters":{"allusers":false,"dateend":"25-03-2022 02:17:53","datestart":"25-03-2022 02:17:53","showcancelled":true},"resourceid":"","resourcetype":"calendar","timestamp":1646228220,"hmac_version":2,"hmac":"w6ifKMmAdJoKhu0vl2twvfP+ltyOTQ7LqLpvsZkOnlg="}]}}';
         $this->assertSame($expectedOutput, $output);
     }
 }
