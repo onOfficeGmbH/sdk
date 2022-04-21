@@ -34,7 +34,7 @@ class SDKIntegrationTest extends \PHPUnit\Framework\TestCase
      */
     public function test_request_structure_correct()
     {
-        $ncat = new Process(['sudo', 'ncat', '-n', '--ssl', '-l', '1234', '-i', '1', '-4']);
+        $ncat = new Process(['ncat', '-n', '--ssl', '-l', '1234', '-i', '1', '-4']);
         $ncat->setTimeout(5);
         $ncat->setIdleTimeout(5);
 
