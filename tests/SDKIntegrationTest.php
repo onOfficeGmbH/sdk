@@ -52,11 +52,22 @@ class SDKIntegrationTest extends \PHPUnit\Framework\TestCase
             'datestart' => '25-03-2022 02:17:53',
             'showcancelled' => true
         ]);
+
+        // sleep at most one second to send the request at timestamp 1646228220        
+        $current = microtime(true);
+        $expected = (new \DateTime('2022-03-02 13:37:00 UTC'))->format('U');
+
+        $sleepTimeMicroSeconds = $expected - $current;
+
+        if ($sleepTimeMicroSeconds > 0) {
+            usleep(intval($sleepTimeMicroSeconds * 1000000));
+        }        
+        
         $sdk->sendRequests('testtoken', 'testsecret');
 EOS;
 
         sleep(2);
-        $php = new Process(['faketime', '2022-03-02 13:37:00 UTC', 'php', '-r', $script], dirname(__DIR__));
+        $php = new Process(['faketime', '2022-03-02 13:36:59 UTC', 'php', '-r', $script], dirname(__DIR__));
         $php->setTimeout(2);
         $php->setIdleTimeout(2);
         $php->start();
