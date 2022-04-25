@@ -12,8 +12,14 @@
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="Test Suite">
+        <testsuite name="unit">
             <directory>./tests/</directory>
+            <filter>
+                <exclude>./tests/SDKIntegrationTest.php</exclude>
+            </filter>
+        </testsuite>
+        <testsuite name="integration">
+            <file>./tests/SDKIntegrationTest.php</file>
         </testsuite>
     </testsuites>
 

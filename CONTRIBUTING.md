@@ -36,7 +36,8 @@ The list of maintainers can be found [here](https://github.com/orgs/onOfficeGmbH
   general behaviour.
 * Contact one of the maintainers in the Pull Request.
   The list of maintainers can be found [here](https://github.com/orgs/onOfficeGmbH/people)
-* Every Pull Request with actual code changes has to add or adapt unit tests.
+* Every Pull Request with actual code changes has to add or adapt unit and/or integration tests. 
+  Please see [Running the Tests](#running-the-tests) down below.
 * Create a meaningful title for the Pull Request that addresses the topic.
 * The Pull Request must pass the CI integration.
   Be aware of the currently supported PHP versions and optimize your code according
@@ -47,3 +48,12 @@ The list of maintainers can be found [here](https://github.com/orgs/onOfficeGmbH
   Try always to create the best possible solution.
 * Use readable and understandable commit messages, so the reviewer can understand the
   intention of each commit.
+
+## Running the Tests
+
+The tests of this project consist on two [test suites](https://phpunit.readthedocs.io/en/9.5/organizing-tests.html).
+These are named _unit_ and _integration_ for unit tests and integration tests, respectively.
+Running the unit tests should be no harder that running
+`./vendor/bin/phpunit --testsuite unit`,  while executing the integration tests requires the binaries `faketime` and `ncat`
+to be in the `$PATH`. The integration tests can be run by typing
+`./vendor/bin/phpunit --testsuite integration`.
