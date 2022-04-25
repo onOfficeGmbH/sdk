@@ -24,6 +24,8 @@ jobs:
       with:
         php-version: ${{ matrix.php }}
 
+    - run: sudo apt-get update && sudo apt-get install faketime nmap
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
