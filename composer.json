@@ -19,6 +19,6 @@
     "require-dev": {
       "phpunit/phpunit": "^6",
       "friendsofphp/php-cs-fixer": "^2.16",
-      "symfony/process": "^3.4.37"
+      "symfony/process": "^5.4.8"
     }
 }
