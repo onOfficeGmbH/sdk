@@ -10,7 +10,7 @@ $pSDK->setApiVersion('stable');
 $parameterCacheId = '<insert parameterCacheId from IFrame url>';
 $extendedClaim = '<insert apiClaim from IFrame url>';
 $apiUserToken = '<insert apiToken from IFrame url>';
-$apiUserSecret = '<insert posted secret that ther user has copied to your IFrame>';
+$apiUserSecret = '<insert posted secret that the user has copied to your IFrame>';
 
 $parameterUnlockProvider = [
 	'parameterCacheId' => $parameterCacheId,
