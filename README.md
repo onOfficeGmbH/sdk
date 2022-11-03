@@ -138,7 +138,7 @@ The response will be a PHP array.
 
 ### Difference between `call` and `callGeneric`
 
-This library will provide two general methods that to create the calls to the onOffice API.
+This library will provide two general methods to create the calls to the onOffice API.
 
 * `callGeneric` is used to create simple calls e.g. 
    [Estate searches](https://apidoc.onoffice.de/actions/datensatz-lesen/objekte/)
