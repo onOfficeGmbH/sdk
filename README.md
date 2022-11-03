@@ -136,6 +136,22 @@ var_export($sdk->getResponseArray($handleReadEstate));
 
 The response will be a PHP array.
 
+### Difference between `call` and `callGeneric`
+
+This library will provide two general methods that to create the calls to the onOffice API.
+
+* `callGeneric` is used to create simple calls e.g. 
+   [Estate searches](https://apidoc.onoffice.de/actions/datensatz-lesen/objekte/)
+   or
+  [reading addresses](https://apidoc.onoffice.de/actions/datensatz-lesen/adressen/)
+* `call` can be used more specific for special API Requests.
+  Some API Request need some more information like `identifier`, `resourceId` and `resourceType`
+  to be processed.
+  This can be calls like [Estate files](https://apidoc.onoffice.de/actions/informationen-abfragen/objektdateien/)
+  or [Editing Addresses](https://apidoc.onoffice.de/actions/datensatz-bearbeiten/addresses/)
+
+Check the [API documentation](#api-documentation) for more information.
+
 ## API Documentation
 
 The API client is developed for the latest version of the official API.
