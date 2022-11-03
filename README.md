@@ -147,7 +147,7 @@ This library will provide two general methods to create the calls to the onOffic
 * `call` can be used more specific for special API Requests.
   Some API Request need some more information like `identifier`, `resourceId` and `resourceType`
   to be processed.
-  This can be calls like [Estate files](https://apidoc.onoffice.de/actions/informationen-abfragen/objektdateien/)
+  These can be calls like [Estate files](https://apidoc.onoffice.de/actions/informationen-abfragen/objektdateien/)
   or [Editing Addresses](https://apidoc.onoffice.de/actions/datensatz-bearbeiten/addresses/)
 
 Check the [API documentation](#api-documentation) for more information.
