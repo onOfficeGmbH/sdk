@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\onOffice\SDK;
+namespace Tests\onOffice\SDK\Unit;
 
 use onOffice\SDK\Cache\onOfficeSDKCache;
 use onOffice\SDK\Exception\HttpFetchNoResultException;

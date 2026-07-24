@@ -8,24 +8,21 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
         <testsuite name="unit">
-            <directory>./tests/</directory>
-            <filter>
-                <exclude>./tests/SDKIntegrationTest.php</exclude>
-            </filter>
+            <directory>tests/unit</directory>
         </testsuite>
+
         <testsuite name="integration">
-            <file>./tests/SDKIntegrationTest.php</file>
+            <directory>tests/integration</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/</directory>
+            <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
 </phpunit>

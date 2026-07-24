@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\onOffice\SDK;
+namespace Tests\onOffice\SDK\Unit;
 
 class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 {

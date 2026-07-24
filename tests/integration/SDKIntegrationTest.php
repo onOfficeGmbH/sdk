@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tests\onOffice\SDK;
+namespace Tests\onOffice\SDK\Integration;
 
 use Symfony\Component\Process\Process;
 
