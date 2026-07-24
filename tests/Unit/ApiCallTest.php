@@ -136,6 +136,7 @@ class ApiCallTest extends \PHPUnit\Framework\TestCase
 	public function testAddCache()
 	{
 		$cache = $this->getMockBuilder(onOfficeSDKCache::class)
+            ->disableOriginalConstructor()
 			->getMock();
 
 		$apiCall = new ApiCall();
@@ -148,6 +149,7 @@ class ApiCallTest extends \PHPUnit\Framework\TestCase
 	public function testRemoveCacheInstances()
 	{
 		$cache = $this->getMockBuilder(onOfficeSDKCache::class)
+            ->disableOriginalConstructor()
 			->getMock();
 
 		$apiCall = new ApiCall();
