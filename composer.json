@@ -21,5 +21,16 @@
       "phpunit/phpunit": "^8",
       "friendsofphp/php-cs-fixer": "^2.16",
       "symfony/process": "^5.4.21"
+    },
+    "scripts": {
+        "test-unit": [
+            "phpunit -c phpunit.xml.dist --testsuite unit"
+        ],
+        "test-integration": [
+            "phpunit -c phpunit.xml.dist --testsuite integration"
+        ],
+        "test": [
+            "phpunit -c phpunit.xml.dist"
+        ]
     }
 }
