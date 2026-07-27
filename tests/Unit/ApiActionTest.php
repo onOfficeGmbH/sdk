@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\onOffice\SDK;
+namespace Tests\onOffice\SDK\Unit;
 
 use onOffice\SDK\internal\ApiAction;
 

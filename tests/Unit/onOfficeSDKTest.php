@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\onOffice\SDK;
+namespace Tests\onOffice\SDK\Unit;
 
 class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 {
@@ -145,6 +145,7 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 			->with('https://api.onoffice.de/api/');
 
 		$cache = $this->getMockBuilder(\onOffice\SDK\Cache\onOfficeSDKCache::class)
+            ->disableOriginalConstructor()
 			->getMock();
 
 		$apiCall->expects($this->once())

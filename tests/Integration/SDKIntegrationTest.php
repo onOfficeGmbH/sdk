@@ -1,37 +1,31 @@
 <?php
 
 
-namespace Tests\onOffice\SDK;
+namespace Tests\onOffice\SDK\Integration;
 
+use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
 
 class SDKIntegrationTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * tests if faketime package is available
-     */
-    public function test_faketime_available()
+    public function setUp(): void
     {
-        $process = new Process(['which', 'faketime']);
-        $process->run();
-        $this->assertSame(0, $process->getExitCode());
+        parent::setUp();
+
+        if (! $this->isBinaryAvailable('ncat')) {
+            $this->markTestSkipped('the ncat binary is not available');
+        }
+
+        if (! $this->isBinaryAvailable('faketime')) {
+            $this->markTestSkipped('the faketime binary is not available');
+        }
     }
 
-    /**
-     * @depends test_faketime_available
-     * Tests if ncat from nmap package is installed
-     */
-    public function test_ncat_available()
+    private function isBinaryAvailable(string $binaryName): bool
     {
-        $process = new Process(['which', 'ncat']);
-        $process->run();
-        $this->assertSame(0, $process->getExitCode());
+        return (new ExecutableFinder())->find($binaryName) !== null;
     }
 
-
-    /**
-     * @depends test_ncat_available
-     */
     public function test_request_structure_correct()
     {
         $ncat = new Process(['ncat', '-n', '--ssl', '-l', '1234', '-i', '1', '-4']);
