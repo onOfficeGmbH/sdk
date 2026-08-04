@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Tests
 
 on:
   push:
@@ -11,35 +11,25 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['7.0', '7.1', '7.2', '7.3', '7.4']
+        # Only 7.4 due to OS EOL constraints
+        php: ['7.4']
 
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup PHP with pre-release PECL extension
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
+    - uses: actions/checkout@v4
 
-    - run: sudo apt-get update && sudo apt-get install faketime nmap
+    - name: Build image
+      env:
+        PHP_VERSION: ${{ matrix.php }}
+      run: docker compose build
 
     - name: Validate composer.json and composer.lock
-      run: composer validate --strict
-
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+      run: docker compose run --rm sdk composer validate --strict
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: docker compose run --rm sdk composer install --prefer-dist --no-progress
 
     - name: Tests
-      run: vendor/bin/phpunit
+      run: docker compose run --rm sdk composer run-script test
