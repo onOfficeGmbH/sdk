@@ -4,3 +4,6 @@
 # PHPUnit
 /.phpunit.cache
 .phpunit.result.cache
+
+# PhpStorm
+/.idea/
