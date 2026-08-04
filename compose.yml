@@ -1,0 +1,11 @@
+services:
+  sdk:
+    build:
+      context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION:-7.4}
+    volumes:
+      - .:/app
+    working_dir: /app
+    # The integration test starts ncat on 127.0.0.1 inside this container, so
+    # nothing needs to be published to the host.
