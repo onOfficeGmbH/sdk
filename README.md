@@ -176,6 +176,24 @@ You want to contribute? Great!
 
 Check out our [contribution rules](/CONTRIBUTING.md) and get started!
 
+Tests can be executed the following way:
+
+```
+$ docker compose run --rm sdk composer run-script test
+```
+
+Only integration tests:
+
+```
+$ docker compose run --rm sdk composer run-script test-integration
+```
+
+Only unit tests:
+
+```
+$ docker compose run --rm sdk composer run-script test-unit
+```
+
 ## License
 
 This project is licensed under the MIT License. See [LICENSE document](/LICENSE).
