@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\onOffice\SDK\Integration;
 
 use Symfony\Component\Process\ExecutableFinder;
@@ -31,7 +30,6 @@ class SDKIntegrationTest extends \PHPUnit\Framework\TestCase
         $ncat = new Process(['ncat', '-n', '--ssl', '-l', '1234', '-i', '1', '-4']);
         $ncat->setTimeout(5);
         $ncat->setIdleTimeout(5);
-
         $ncat->start();
 
         $script = <<<'EOS'
@@ -39,7 +37,11 @@ class SDKIntegrationTest extends \PHPUnit\Framework\TestCase
         $sdk = new \onOffice\SDK\onOfficeSDK();
         $sdk->setApiVersion('latest');
         $sdk->setApiServer('https://localhost:1234/api/');
-        $sdk->setApiCurlOptions([CURLOPT_SSL_VERIFYPEER => false, CURLOPT_SSL_VERIFYHOST => false]);
+        $sdk->setApiCurlOptions([
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_ACCEPT_ENCODING => 'deflate, gzip',
+        ]);
         $sdk->call(\onOffice\SDK\onOfficeSDK::ACTION_ID_READ, '', null, 'calendar', [
             'allusers' => false,
             'dateend' => '25-03-2022 02:17:53',
@@ -61,15 +63,18 @@ class SDKIntegrationTest extends \PHPUnit\Framework\TestCase
 EOS;
 
         sleep(2);
-        $php = new Process(['faketime', '2022-03-02 13:36:59 UTC', 'php', '-r', $script], dirname(__DIR__));
+        $php = new Process(
+            ['faketime', '2022-03-02 13:36:59 UTC', 'php', '-r', $script],
+            // repository root for relative vendor/autoload.php path
+            dirname(__DIR__, 2)
+        );
         $php->setTimeout(2);
         $php->setIdleTimeout(2);
         $php->start();
 
         $this->assertTrue($ncat->isStarted());
 
-        if ($php->isTerminated())
-        {
+        if ($php->isTerminated()) {
             $this->fail('PHP terminated');
             return;
         }
