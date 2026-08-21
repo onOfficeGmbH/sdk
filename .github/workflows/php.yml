@@ -17,13 +17,39 @@ jobs:
         # Only 7.4 due to OS EOL constraints
         php: ['7.4']
 
+    # Read by compose.yml for both the build arg and the image tag
+    env:
+      PHP_VERSION: ${{ matrix.php }}
+
     steps:
     - uses: actions/checkout@v4
 
+    # The image holds no application code, so it only changes when the
+    # Dockerfile or the PHP version does.
+    - name: Cache Docker image
+      id: docker-image
+      uses: actions/cache@v4
+      with:
+        path: /tmp/sdk-dev-image.tar
+        key: docker-${{ matrix.php }}-${{ hashFiles('Dockerfile') }}
+
+    - name: Load cached image
+      if: steps.docker-image.outputs.cache-hit == 'true'
+      run: docker load -i /tmp/sdk-dev-image.tar
+
     - name: Build image
-      env:
-        PHP_VERSION: ${{ matrix.php }}
-      run: docker compose build
+      if: steps.docker-image.outputs.cache-hit != 'true'
+      run: |
+        docker compose build
+        docker save -o /tmp/sdk-dev-image.tar "$(docker compose config --images)"
+
+    # COMPOSER_CACHE_DIR points here, see compose.yml.
+    - name: Cache Composer packages
+      uses: actions/cache@v4
+      with:
+        path: .composer-cache
+        key: composer-${{ matrix.php }}-${{ hashFiles('composer.lock') }}
+        restore-keys: composer-${{ matrix.php }}-
 
     - name: Validate composer.json and composer.lock
       run: docker compose run --rm sdk composer validate --strict
