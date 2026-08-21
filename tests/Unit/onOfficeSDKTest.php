@@ -86,6 +86,46 @@ class onOfficeSDKTest extends \PHPUnit\Framework\TestCase
 		);
 	}
 
+	public function testCall()
+	{
+		$apiCall = $this->getMockBuilder(\onOffice\SDK\internal\ApiCall::class)
+			->disableOriginalConstructor()
+			->setMethods(['setServer', 'callByRawData'])
+			->getMock();
+
+		$apiCall->expects($this->once())
+			->method('setServer')
+			->with('https://api.onoffice.de/api/');
+
+		$apiCall->expects($this->once())
+			->method('callByRawData')
+			->with(
+				'someActionId',
+				'someResourceId',
+				'someIdentifier',
+				'someResourceType',
+				[
+					'some',
+					'parameters',
+				]
+			)
+			->willReturn(23);
+
+		$onOfficeSdk = new \onOffice\SDK\onOfficeSDK($apiCall);
+		$result = $onOfficeSdk->call(
+			'someActionId',
+			'someResourceId',
+			'someIdentifier',
+			'someResourceType',
+			[
+				'some',
+				'parameters',
+			]
+		);
+
+		$this->assertSame(23, $result);
+	}
+
 	public function testSendRequests()
 	{
 		$apiCall = $this->getMockBuilder(\onOffice\SDK\internal\ApiCall::class)

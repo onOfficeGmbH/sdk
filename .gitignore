@@ -1,6 +1,10 @@
 # Composer
 /vendor/
+/.composer-cache/
 
 # PHPUnit
 /.phpunit.cache
 .phpunit.result.cache
+
+# PhpStorm
+/.idea/

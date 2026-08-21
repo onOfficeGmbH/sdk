@@ -1,0 +1,15 @@
+# Installed at runtime into the bind mount, never into the image.
+/vendor/
+/.composer-cache/
+
+/.git/
+/.github/
+/.idea/
+
+/.phpunit.cache
+.phpunit.result.cache
+
+# Never needed by a build.
+*.tar
+*.tar.gz
+*.zip
