@@ -1,0 +1,17 @@
+services:
+  sdk:
+    image: onoffice-sdk:php${PHP_VERSION:-7.4}
+    build:
+      context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION:-7.4}
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      # Composer runs as root inside a disposable.
+      # Default cache location would be thrown away.
+      # So it has to be in the bind mount:
+      COMPOSER_CACHE_DIR: /app/.composer-cache
+    # The integration test starts ncat on 127.0.0.1 inside this container, so
+    # nothing needs to be published to the host.
