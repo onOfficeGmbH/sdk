@@ -6,6 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "composer" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directory: "/" # Location of package manifest
     schedule:
       interval: "weekly"
+  - package-ecosystem: "github-actions" # to keep an eye on CI tooling updates
+    directory: "/"
+    schedule:
+      interval: "monthly"
