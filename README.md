@@ -165,8 +165,15 @@ The recommended way to install this library is through Composer.
 This will install the latest supported version:
 
 ```
-$ composer require onoffice/sdk:^0.2.0
+$ composer require onoffice/sdk:^0.3.0
 ```
+
+### Requirements
+
+* PHP 7.2.5 or higher
+* cURL PHP Extension
+* JSON PHP Extension
+
 See also the [CHANGELOG](/CHANGELOG.md)
 for details about version upgrades.
 
